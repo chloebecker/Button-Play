@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<head>
+	<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    	<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+
+	<script>
+		function sizeUp() {
+			var elem = document.getElementById("text");
+			var style = window.getComputedStyle(elem, null).getPropertyValue("font-size");
+			var fontSize = parseFloat(style); //parses a string and returns a float
+			if(fontSize < 70) {
+				elem.style.fontSize = (fontSize + 10) + "px";
+			}
+		
+		}
+		
+		function sizeDown() {
+			var elem = document.getElementById("text");
+			var style = window.getComputedStyle(elem, null).getPropertyValue("font-size");
+			var fontSize = parseFloat(style); 
+			if(fontSize > 10) {
+				elem.style.fontSize = (fontSize - 10) + "px";
+			}
+		}
+		
+		function fontColor() {
+			var color = prompt("Enter the hexadecimal value for the color you want your font to be:","#000000");
+			if (color != null) {
+        			document.getElementById("text").style.color=color;
+    			}
+			
+		}
+		
+		function backToBlack() {
+			document.getElementById("text").style.color="black";
+		}
+		
+		function changeFont() {
+			var font = document.getElementById("text").style.fontStyle;
+			if(font == "italic") {
+				newFont = "normal";
+			} else {
+				newFont = "italic";
+			}
+			document.getElementById("text").style.fontStyle=newFont;
+		}
+		
+		function changeBackground() {
+			var color = prompt("Enter the hexadecimal value for the color you want your background to be:","#ffffff");
+			if (color != null) {
+				document.getElementById("body").style.backgroundColor=color;
+			}
+		}
+		
+	</script>
+	
+	<style>
+		
+		#text {
+			padding: 150px 10px 50px 10px;
+			margin: 75px;
+			font-size: 40px;
+			text-align: center;
+			height: 100px;	
+		}
+		
+		#center {
+			text-align: center;
+		}
+		
+	</style>
+
+</head>
+
+<body id="body">
+
+
+	<div class="col-md-10 col-md-offset-1">
+		<div id="text"> Click the buttons! </div>
+	</div>
+	<div class="col-md-8 col-md-offset-2" id="center">	
+		<button type="button" onclick="sizeUp()"> Increase font size </button>
+		<button type="button" onclick="sizeDown()"> Decrease font size </button>
+		<button type="button" onclick="fontColor()"> Change the font color... </button>
+		<button type="button" onclick="backToBlack()"> ...back to black </button>
+		<button type="button" onclick="changeFont()"> Italic/Regular </button>
+		<button type="button" onclick="changeBackground()"> Background color </button>
+	</div>
+
+</body>
+
+
+</html>
